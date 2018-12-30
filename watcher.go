@@ -27,12 +27,13 @@ func (c *conf) getConf() *conf {
 }
 
 func main() {
-    var c conf
-    c.getConf()
+  var config conf
+    config.getConf()
     fmt.Println("Print checking for offers ...")
-    fmt.Println("Looking for:", c.Keywords)
-    fmt.Println(" ... while vetoing:", c.Vetowords)
-    fmt.Println(" ... on:", c.Websites)
+    fmt.Println("Looking for:", config.Keywords)
+    fmt.Println(" ... while vetoing:", config.Vetowords)
+    fmt.Println(" ... on:", config.Websites)
 
-    RequestEbay()
+    ebayFindings := RequestEbay(config)
+    fmt.Println(ebayFindings)
 }
