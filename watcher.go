@@ -14,16 +14,16 @@ type conf struct {
     Websites []string `yaml:"websites"`
 }
 
-func (c *conf) getConf() *conf {
+func (config *conf) getConf() *conf {
     yamlFile, err := ioutil.ReadFile("conf.yaml")
     if err != nil {
         log.Printf("yamlFile.Get err   #%v ", err)
     }
-    err = yaml.Unmarshal(yamlFile, c)
+    err = yaml.Unmarshal(yamlFile, config)
     if err != nil {
         log.Fatalf("Unmarshal: %v", err)
     }
-    return c
+    return config
 }
 
 func main() {
