@@ -26,6 +26,8 @@ func (config *conf) getConf() *conf {
 }
 
 func main() {
+
+	// read config
 	var config conf
 	config.getConf()
 	fmt.Println("Print checking for offers ...")
@@ -33,6 +35,7 @@ func main() {
 	fmt.Println(" ... while vetoing:", config.Vetowords)
 	fmt.Println(" ... on:", config.Websites)
 
+	// perform queries
 	var results []string
 	if contains(config.Websites, "ebay") {
 		results = append(append(RequestEbay(config), results...))
@@ -43,7 +46,9 @@ func main() {
 	if contains(config.Websites, "ebay-kleinanzeigen") {
 		results = append(append(RequestEbayKleinanzeigen(config), results...))
 	}
-	fmt.Println(results)
+
+	// present results
+	fmt.Println("Found these results:", results)
 	SendEmail(results)
 }
 
