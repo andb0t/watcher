@@ -6,5 +6,5 @@ vetowords:
   - "Neuwagen"
 websites:
   - "ebay"
-  - "ebay-kleinanzeigen"
-  - "autoscout24"
+  # - "ebay-kleinanzeigen"
+  # - "autoscout24"
