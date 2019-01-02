@@ -44,6 +44,7 @@ func main() {
 		results = append(append(RequestEbayKleinanzeigen(config), results...))
 	}
 	fmt.Println(results)
+	SendEmail(results)
 }
 
 func contains(s []string, e string) bool {
