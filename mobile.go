@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-	// "net/url"
 	"io/ioutil"
 	"log"
+	"net/http"
 )
 
 func RequestMobile(config conf) []string {
@@ -25,19 +24,18 @@ func RequestMobile(config conf) []string {
 	q.Add("api_key", "myapikey")
 	req.URL.RawQuery = q.Encode()
 	fmt.Println(req.URL.String())
-
-
+	// execute request
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("Errored when sending request to the server")
 		return []string{}
 	}
-
-	 defer resp.Body.Close()
-	 respBody, _ := ioutil.ReadAll(resp.Body)
-
-	 fmt.Println(resp.Status)
-	 fmt.Println(string(respBody))
+	// close reqeust
+	defer resp.Body.Close()
+	// parse it
+	respBody, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(resp.Status)
+	fmt.Println(string(respBody))
 
 	results := []string{"www.mobile.de/0", "www.mobile.de/1"}
 	return results
