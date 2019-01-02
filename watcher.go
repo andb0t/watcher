@@ -46,6 +46,9 @@ func main() {
 	if contains(config.Websites, "ebay-kleinanzeigen") {
 		results = append(append(RequestEbayKleinanzeigen(config), results...))
 	}
+	if contains(config.Websites, "mobile") {
+		results = append(append(RequestMobile(config), results...))
+	}
 
 	// present results
 	fmt.Println("Found these results:", results)
