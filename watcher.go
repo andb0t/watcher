@@ -33,6 +33,24 @@ func main() {
 	fmt.Println(" ... while vetoing:", config.Vetowords)
 	fmt.Println(" ... on:", config.Websites)
 
-	ebayFindings := RequestEbay(config)
-	fmt.Println(ebayFindings)
+	var results []string
+	if contains(config.Websites, "ebay") {
+		results = append(append(RequestEbay(config), results...))
+	}
+	if contains(config.Websites, "autoscout24") {
+		results = append(append(RequestAutoScout24(config), results...))
+	}
+	if contains(config.Websites, "ebay-kleinanzeigen") {
+		results = append(append(RequestEbayKleinanzeigen(config), results...))
+	}
+	fmt.Println(results)
+}
+
+func contains(s []string, e string) bool {
+    for _, a := range s {
+        if a == e {
+            return true
+        }
+    }
+    return false
 }
